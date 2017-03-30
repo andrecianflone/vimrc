@@ -1,6 +1,5 @@
 ## My vimrc
-
-This is my entire vimrc (vim settings) file. I have tried many plugins over the years and I feel the current setup is quite ideal. I've also added some custom vim functions and shortcuts.
+This is my entire vimrc (vim settings) file. I have tried many plugins over the years and I feel the current setup is quite ideal. I've also added some custom vim functions and shortcuts. I would invite you to read through the file to learn about all its features.
 
 ## Installation
 ### 1. Download
