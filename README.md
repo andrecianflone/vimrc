@@ -4,7 +4,7 @@ This is my entire vimrc (vim settings) file. I have tried many plugins over the 
 
 ## Installation
 ### 1. Download
-You can simply download the `.vimrc` file to your local `~/.vimrc`. To keep your file in sync with mine or with your own repo, clone the repo and hardlink `~/.vimrc` to the `./vimrc` file in the repo:
+You can simply download the `.vimrc` file to your local `~/.vimrc`. Alternatively, you can keep your file in sync with this repo or with your own repo: clone the repo and hardlink `~/.vimrc` to the `./vimrc` file in the repo:
 
 ``` bash
 cd ~/Downloads
@@ -14,7 +14,7 @@ ln ~/Downloads/vimrc/.vimrc .vimrc # hardlink
 ```
 
 ### 2. Setup Vundle and Plugins
-Before opening .vimrc, install Vundle:
+Before opening `.vimrc`, install Vundle:
 
 ``` bash
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -23,23 +23,23 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 Now launch `vim` and run `:PluginInstall`, and you're all set.
 
 ## The file is organized in the following sections:
-1. Plugins: all plugins organized by Vundle
-2. Plugin options: customize your plugins here
-3. General settings: vim settings, such as tabs, syntax color, etc
-4. Key remap: useful shortcuts, such as <kbd>F7</kbd> to launch NERDTree
-5. Functions: my own Vim functions
+1. `Plugins`: all plugins organized by Vundle
+2. `Plugin options`: customize your plugins here
+3. `General settings`: vim settings, such as tabs, syntax color, etc
+4. `Key remap`: useful shortcuts, such as <kbd>F7</kbd> to launch NERDTree
+5. `Functions`: my own Vim functions
 
-## Plugin highlight
-Here are a few plugins you absolutely need to know about.
+## Plugin highlights
+Here are a few plugins you absolutely need to know about, check `.vimrc` for the rest. Remember to checkout the plugins' respective github page for usage info on the plugins. In case you're not aware, if the plugin name is `godlygeek/tabular`, then the webpage is `https://github.com/godlygeek/tabular`.
 
-- Vim startify: simply type `vim` in your CLI, look at the beautiful menu
-- Vim-easymotion: type <kbd>leader</kbd><kbd>w</kbd>, now every word in the buffer has a quick shortcut combination. You can do the same with lines and more.
-- NERD tree: tree explorer for Vim. Shortcut: <kbd>F7</kbd>
-- Vim session: a session manager for Vim. Saved sessions will also appear in `Vim startify`.
-- Tabular: align things easily in Vim. Shortcut: <kbd>t</kbd><kbd>t</kbd>
+- `Vim startify`: simply type `vim` in your CLI, look at the beautiful menu
+- `Vim-easymotion`: most used plugin ever. Type <kbd>leader</kbd><kbd>w</kbd>, now every word in the buffer has a quick shortcut combination. You can do the same with lines and more.
+- `NERDtree`: tree explorer for Vim. Shortcut: <kbd>F7</kbd>
+- `Vim session`: a session manager for Vim. Saved sessions will also appear in `Vim startify`.
+- `Tabular`: align things easily in Vim. Shortcut: <kbd>t</kbd><kbd>t</kbd>
 
 ## Custom features
-Checkout the plugins' respective git page for info on the plugins. Here I highlight a few functions and feature which I wrote and find handy.
+I'll highlight a few functions and feature which I wrote and find handy.
 
 Note, your <kbd>leader</kbd> key is probably the backspace key.
 
