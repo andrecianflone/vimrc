@@ -23,9 +23,29 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 Now launch `vim` and run `:PluginInstall`, and you're all set.
 
 
+## The file is organized in the following sections:
+1. Plugins: all plugins organized by Vundle
+2. Plugin options: customize your plugins here
+3. General settings: vim settings, such as tabs, syntax color, etc
+4. Key remap: useful shortcuts, such as <kbd>F7</kbd> to launch NERDTree
+5. Functions: my own Vim functions
+
 ## Custom features
-Checkout the plugins' respective git page for info on the plugins. Here I highlight a few functions and feature I wrote.
+Checkout the plugins' respective git page for info on the plugins. Here I highlight a few functions and feature which I wrote and find handy.
 
-**Switch Window**
+Note, your <kbd>leader</kbd> key is probably the backspace, <kbd>\</kbd>
 
-This function is a huge timesaver. After splitting your views vertically with <kbd>CTRL+w<kbd> + <kbd>v<kbd>, you'll notice the windows are numbered. To switch to window `[2]`, simply type `leader` + `2`.
+### Switch Window function
+This function is a huge timesaver. After splitting your views vertically with <kbd>CTRL-w</kbd><kbd>v</kbd>, you'll notice the windows are numbered. To switch to window `[2]`, simply type <kbd>\</kbd><kbd>2</kbd>.
+
+
+### Todo lists
+Pressing <kbd>leader</kbd><kbd>t</kbd> will generate a to-do list in a quickfix window. Jump to the next item in the list with <kbd>CTRL-j</kbd> and the previous with <kbd>CTRL-k</kbd>.
+
+### Copy to clipboard
+In normal mode, type `:Clip` and the entire buffer is copied to the clipboard. This requires `xclip` on Linux.
+
+### Useful Remaps
+Some key remaps I can't live without
+
+- <kbd></kbd>
