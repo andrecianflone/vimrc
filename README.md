@@ -22,7 +22,6 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 Now launch `vim` and run `:PluginInstall`, and you're all set.
 
-
 ## The file is organized in the following sections:
 1. Plugins: all plugins organized by Vundle
 2. Plugin options: customize your plugins here
@@ -30,13 +29,22 @@ Now launch `vim` and run `:PluginInstall`, and you're all set.
 4. Key remap: useful shortcuts, such as <kbd>F7</kbd> to launch NERDTree
 5. Functions: my own Vim functions
 
+## Plugin highlight
+Here are a few plugins you absolutely need to know about.
+
+- Vim startify: simply type `vim` in your CLI, look at the beautiful menu
+- Vim-easymotion: type <kbd>leader</kbd><kbd>w</kbd>, now every word in the buffer has a quick shortcut combination. You can do the same with lines and more.
+- NERD tree: tree explorer for Vim. Shortcut: <kbd>F7</kbd>
+- Vim session: a session manager for Vim. Saved sessions will also appear in `Vim startify`.
+- Tabular: align things easily in Vim. Shortcut: <kbd>t</kbd><kbd>t</kbd>
+
 ## Custom features
 Checkout the plugins' respective git page for info on the plugins. Here I highlight a few functions and feature which I wrote and find handy.
 
-Note, your <kbd>leader</kbd> key is probably the backspace, <kbd>\</kbd>
+Note, your <kbd>leader</kbd> key is probably the backspace key.
 
 ### Switch Window function
-This function is a huge timesaver. After splitting your views vertically with <kbd>CTRL-w</kbd><kbd>v</kbd>, you'll notice the windows are numbered. To switch to window `[2]`, simply type <kbd>\</kbd><kbd>2</kbd>.
+This function is a huge timesaver. After splitting your views vertically with <kbd>CTRL-w</kbd><kbd>v</kbd>, you'll notice the windows are numbered. To switch to window `[2]`, simply type <kbd>leader</kbd><kbd>2</kbd>.
 
 
 ### Todo lists
@@ -46,6 +54,23 @@ Pressing <kbd>leader</kbd><kbd>t</kbd> will generate a to-do list in a quickfix 
 In normal mode, type `:Clip` and the entire buffer is copied to the clipboard. This requires `xclip` on Linux.
 
 ### Useful Remaps
-Some key remaps I can't live without
+Some key remaps I can't live without.
 
-- <kbd></kbd>
+- <kbd>j-k</kbd>: switch to normal mode. No more searching for <kbd>ESC</kdb>!!!
+- <kbd>F7</kbd>: Toggle NERDTree
+- <kbd>tt</kbd>: Shortcut for `:Tabularize /`, the second most used plugin ever.
+- <kbd>F8</kbd>: Opens a tag bar on the right. Assumes you ran `ctags`.
+- <kbd>F12</kbd>: Toggles "pastemode" on and off. Required when pasting code from clipboard.
+
+## Fix solarized theme
+If the solarized theme is not displaying properly, you need to set it up for Terminal as well. Simply do the following.
+
+```
+wget --no-check-certificate https://raw.github.com/seebi/dircolors-solarized/master/dircolors.ansi-dark
+mv dircolors.ansi-dark .dircolors
+eval `dircolors ~/.dircolors`
+git clone https://github.com/sigurdga/gnome-terminal-colors-solarized.git
+cd gnome-terminal-colors-solarized
+./set_dark.sh
+rm -Rf gnome-terminal-colors-solarized
+```
