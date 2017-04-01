@@ -1,25 +1,22 @@
 ## My vimrc
 This is my entire vimrc (vim settings) file. I have tried many plugins over the years and I feel the current setup is quite ideal. I've also added some custom vim functions and shortcuts. I would invite you to read through the file to learn about all its features.
 
+## System Requirements for YouCompleteMe
+1. You need to use the official python distrubutor in shell (avoid from [anaconda](https://github.com/Valloric/YouCompleteMe/issues/1241))
+2. You need [update your vim](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source).
+
 ## Installation
-### 1. Download
-You can simply download the `.vimrc` file to your local `~/.vimrc`. Alternatively, you can keep your file in sync with this repo or with your own repo: clone the repo and hardlink `~/.vimrc` to the `./vimrc` file in the repo:
-
+cd ~/git
 ``` bash
-cd ~/Downloads
-git clone git@github.com:proximacent/vimrc.git
-cd ~
-ln ~/Downloads/vimrc/.vimrc .vimrc # hardlink
+git clone --recursive git@github.com:mjlaali/vimrc.git
+./install.sh
+```
+or to install YouCompleteMe with CLang support:
+``` bash
+./install.sh --YCM-clang --YCM-install-libs
 ```
 
-### 2. Setup Vundle and Plugins
-Before opening `.vimrc`, install Vundle:
-
-``` bash
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-```
-
-Now launch `vim` and run `:PluginInstall`, and you're all set.
+Now launch `vim` and enjoy! you're all set.
 
 ## The file is organized in the following sections:
 1. `Plugins`: all plugins organized by Vundle

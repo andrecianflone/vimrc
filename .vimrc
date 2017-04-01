@@ -79,6 +79,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
 
+" YouCompleteMe
+" Adding auto-complete feature, use <TAB> to complete an expression
+Bundle 'Valloric/YouCompleteMe'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
