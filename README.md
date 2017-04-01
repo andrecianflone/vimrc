@@ -2,8 +2,8 @@
 This is my entire vimrc (vim settings) file. I have tried many plugins over the years and I feel the current setup is quite ideal. I've also added some custom vim functions and shortcuts. I would invite you to read through the file to learn about all its features.
 
 ## System Requirements for YouCompleteMe
-1. You need to use the official python distrubutor in shell (avoid from [anaconda](https://github.com/Valloric/YouCompleteMe/issues/1241))
-2. You need [update your vim](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source).
+1. You have to use the official python distrubutor in shell (avoid from [anaconda](https://github.com/Valloric/YouCompleteMe/issues/1241))
+2. You may need [update your vim](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source).
 
 ## Installation
 cd ~/git
