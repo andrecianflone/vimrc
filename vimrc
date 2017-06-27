@@ -17,13 +17,17 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " SOLARIZED THEME
-" opens file tree in new left pane, shortcut: F7 (see remap section)
+" opens file tree in a new left pane, shortcut: F7 (see remap section)
 Plugin 'altercation/vim-colors-solarized'
 
 " FIXWHITESPACE
 " Get rid of white spaces
 " usage: :FixWhitespace
 Plugin 'bronson/vim-trailing-whitespace'
+
+" Vim-Signature
+" manage and display marks
+Plugin 'kshenoy/vim-signature'
 
 " TAGBAR
 " get overview of file structure by listing tags
@@ -78,10 +82,6 @@ Plugin 'tpope/vim-fugitive'
 " Easy vim session management
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
-
-" YouCompleteMe
-" Adding auto-complete feature, use <TAB> to complete an expression
-Bundle 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -240,7 +240,7 @@ inoremap jk <Esc>
 map tt :Tabularize /
 
 " Show tagbar
-nmap <F8> :TagbarToggle<CR>
+nmap <F8> :TagbarOpenAutoClose<CR>
 
 " Launch the explorer
 map <F2> :Explore<CR>
