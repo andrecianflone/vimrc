@@ -33,6 +33,9 @@ Plugin 'kshenoy/vim-signature'
 " get overview of file structure by listing tags
 Plugin 'majutsushi/tagbar'
 
+" GUTENTAGS, autogen tags
+Plugin 'ludovicchabant/vim-gutentags'
+
 " TABULAR
 " align stuff easily!
 " See the screen cast on gihub for quick tutorial.
@@ -141,6 +144,33 @@ let g:startify_list_order = [
         \ 'bookmarks',
         \ ]
 
+" VIM SIGNATURE
+" dictionary to map keys
+let g:SignatureMap = {
+  \ 'Leader'             :  "m",
+  \ 'PlaceNextMark'      :  "m,",
+  \ 'ToggleMarkAtLine'   :  "m.",
+  \ 'PurgeMarksAtLine'   :  "m-",
+  \ 'DeleteMark'         :  "dm",
+  \ 'PurgeMarks'         :  "m<Space>",
+  \ 'PurgeMarkers'       :  "m<BS>",
+  \ 'GotoNextLineAlpha'  :  "']",
+  \ 'GotoPrevLineAlpha'  :  "'[",
+  \ 'GotoNextSpotAlpha'  :  "`]",
+  \ 'GotoPrevSpotAlpha'  :  "`[",
+  \ 'GotoNextLineByPos'  :  "]'",
+  \ 'GotoPrevLineByPos'  :  "['",
+  \ 'GotoNextSpotByPos'  :  "]`",
+  \ 'GotoPrevSpotByPos'  :  "[`",
+  \ 'GotoNextMarker'     :  "]-",
+  \ 'GotoPrevMarker'     :  "[-",
+  \ 'GotoNextMarkerAny'  :  "]=",
+  \ 'GotoPrevMarkerAny'  :  "[=",
+  \ 'ListBufferMarks'    :  "m/",
+  \ 'ListBufferMarkers'  :  "m?"
+  \ }
+
+
 " EASYMOTION
 " <Leader>f{char} to move to {char}
 map  <Leader>f <Plug>(easymotion-bd-f)
@@ -238,6 +268,13 @@ inoremap jk <Esc>
 
 " Tabularize in normal or visual mode
 map tt :Tabularize /
+
+" Map to next location in location list
+" Useful with Vim-signature where key 'm/' populates location list with tags
+map ln :lnext<CR>  " go to next item
+map lp :lprevious<CR>
+map lo :lopen<CR>
+map lc :lclose<CR>
 
 " Show tagbar
 nmap <F8> :TagbarOpenAutoClose<CR>
