@@ -282,6 +282,9 @@ nmap <F8> :TagbarOpenAutoClose<CR>
 " Launch the explorer
 map <F2> :Explore<CR>
 
+" Write using sudo
+cmap w!! %!sudo tee > /dev/null
+
 " insert new lines without insert mode
 nnoremap <S-Enter> O<Esc>
 nnoremap <Enter> o<Esc>
