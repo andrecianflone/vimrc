@@ -77,9 +77,11 @@ Plugin 'scrooloose/nerdtree'
 " uncomment : <leader>cu
 Plugin 'scrooloose/nerdcommenter'
 
-" GIT
-" defacto git plugin
-Plugin 'tpope/vim-fugitive'
+" VIM WINDOW SWAP
+" Swap two windows:
+" press: 'gw' in one window
+" navigate to the other window, 'ww' again
+Plugin 'wesQ3/vim-windowswap'
 
 " VIM SESSION
 " Easy vim session management
@@ -121,6 +123,12 @@ let g:syntastic_mode_map = {
 " VIM MARKDOWN
 " Disable folding in Markdown
 let g:vim_markdown_folding_disabled = 1
+
+" VIM WINDOWSWAP
+let g:windowswap_map_keys = 0 "prevent default bindings
+"nnoremap <silent> <leader>yw :call WindowSwap#MarkWindowSwap()<CR>
+"nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
+nnoremap <silent> gw :call WindowSwap#EasyWindowSwap()<CR>
 
 " VIM-SESSION
 let g:session_autoload = 'no' "don't autoload default session
@@ -227,6 +235,11 @@ inoremap <silent> <F5> <Esc> :call SwitchToPrev()<CR>
 " Display Line numbers
 set number
 
+" Enable Omni completion, complete on tags
+" to call in insert mode: <C-X><C-O>
+"filetype plugin on
+"set omnifunc=syntaxcomplete#Complete
+
 " Make sure no undo issues
 set undofile
 set undodir=/home/andre/.vimundo/
@@ -271,19 +284,16 @@ map tt :Tabularize /
 
 " Map to next location in location list
 " Useful with Vim-signature where key 'm/' populates location list with tags
-map ln :lnext<CR>  " go to next item
-map lp :lprevious<CR>
-map lo :lopen<CR>
-map lc :lclose<CR>
+"map ln :lnext<CR>  " go to next item
+"map lp :lprevious<CR>
+"map lo :lopen<CR>
+"map lc :lclose<CR>
 
 " Show tagbar
 nmap <F8> :TagbarOpenAutoClose<CR>
 
 " Launch the explorer
 map <F2> :Explore<CR>
-
-" Write using sudo
-cmap w!! %!sudo tee > /dev/null
 
 " insert new lines without insert mode
 nnoremap <S-Enter> O<Esc>
