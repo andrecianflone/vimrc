@@ -18,7 +18,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " SOLARIZED THEME
 " opens file tree in a new left pane, shortcut: F7 (see remap section)
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
 
 " FIXWHITESPACE
 " Get rid of white spaces
@@ -99,17 +99,20 @@ filetype plugin indent on    " required
 " SOLARIZED
 set background=dark
 " config for proper displaying of colors in Screen
-let g:solarized_termcolors=16
-se t_Co=16
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
-colorscheme solarized
+"let g:solarized_termcolors=16
+"set t_Co=16
+"let g:solarized_visibility = "high"
+"let g:solarized_contrast = "high"
+"colorscheme solarized
 
 " Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+" Disable style messages for syntastic
+let g:syntastic_quiet_messages = { "type": "style" }
+"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -246,8 +249,8 @@ set undodir=/home/andre/.vimundo/
 
 " Tab stuff
 " see: http://stackoverflow.com/questions/1878974/redefine-tab-as-4-spaces
-set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
-au FileType python setl sw=2 sts=2 et
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+au FileType python setl sw=4 sts=4 et
 
 " Fix backspace key issue
 set backspace=indent,eol,start
@@ -264,7 +267,7 @@ filetype on
 " See 80th column
 if (exists('+colorcolumn'))
     set colorcolumn=80
-    highlight ColorColumn ctermbg=0
+    highlight ColorColumn ctermbg=2
 endif
 
 " Set .md as markdown
@@ -288,6 +291,10 @@ map tt :Tabularize /
 "map lp :lprevious<CR>
 "map lo :lopen<CR>
 "map lc :lclose<CR>
+
+" Run Syntastic syntax checkers
+map :s :SyntasticCheck
+map :r :SyntasticReset
 
 " Show tagbar
 nmap <F8> :TagbarOpenAutoClose<CR>
@@ -392,4 +399,4 @@ function! WindowNumber()
 endfunction
 
 set laststatus=2
-set statusline=[%{WindowNumber()}]\ %f\ [line:%4l]
+set statusline=[%{WindowNumber()}]\ %f\ [col:%2c\ line:%4l]
