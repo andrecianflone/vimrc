@@ -6,9 +6,83 @@ If you want to skip the niceties, checkout a list of useful Vim commands [here](
 
 
 # Vim bindings
-The key to Vim are the keystrokes! No more mouse
+The key to Vim are the keystrokes! No more mouse. Here we give an overview of the key topics to keep in mind. For a more complete list of useful commands, checkout [this list]( https://drive.google.com/file/d/0ByV7wn2NzevOeGR6SzMxdFhEQWc/view?usp=sharing)
 
-[Under Construction!]. For now, a list of [useful commands]( https://drive.google.com/file/d/0ByV7wn2NzevOeGR6SzMxdFhEQWc/view?usp=sharing)
+
+## Modes
+Vim has 3 common modes:
+- **normal**: For navagation and selection. This is the default mode. Hit <kbd>ESC</kbd> to back to normal mode, or <kbd>jk</kbd> in my case
+- **insert**: To insert new text. <kbd>i</kbd> shortcut. Also use keys such as <kbd>o</kbd> and <kbd>O</kbd>.
+- **visual**: Block selection and editing. <kbd>v</kbd> and <kbd>CTRL-v</kbd>.
+
+
+## Navigation
+Basics:
+
+```
+h,j,k,l  basic movements, left/down/up/right
+w,e,b    next word, end of word, previous word
+5w       powered movement, move next 5th word
+3fq      powered find "q" (find 3rd q)
+%        when cursor on bracket or paren, go to matching
+0,$      beginning,end of line
+*, #     next, previous word under cursor
+gg,G     go to beg,end of file
+5G       go to line #, here 5th line
+`.       Go to last position in change list.
+g;       Go to [count] older position in change list.
+g,       Go to [count] newer cursor position in change list.
+gd       Go to function definition (under cursor)
+```
+
+
+## Navigating files
+You can open a file from within Vim by typing <kbd>:e</kbd> followed by the file path. Eg relative path:
+```
+:e README.md
+```
+
+Or full path:
+```
+:e ~/.vimrc
+```
+
+To load files in your project, best to use a plugin such as NerTree, which I bind to key <kbd>F7</kbd>
+
+## Visual
+Block edit with <kbd>CTRL-v</kbd>
+```
+dfdfd
+fdfd
+fdfd
+```
+
+## Sessions
+Save your sessions easily (Vim-Session plugin)
+```
+:SaveSession Name
+```
+
+Start Vim and choose previous session or file by typing `vim` directly in the shell.
+
+## Window management
+There are three common methods to manage current files being edited:
+- **buffer**. Default method. Go to next buffer with <kbd>:bn</kbd>
+- **windows**. Split vertically with <kbd>CTRL-w v</kbd> and horizontally with <kbd>CTRL-w s</kbd>
+- **tabs**. New tab with <kbd>:tabedit</kbd>, switch tab with <kbd>gt</kbd>
+
+## Align
+Clean up your code by aligning multiple lines (requires Tabularize). For example:
+```
+def function():
+    long_variable_name = 45
+    short = 3
+    medium_name = 99
+```
+With the cursor in the text, hit <kbd>tt</kbd>, and tell Tabularize along which char to align
+
+## Commenting code
+Use a plugin such as Nerd Commenter. Commenting is as easy as <kbd>\cc</kbd> and uncomment with <kbd>\cu</kbd>
 
 # Plugins
 Vim plugins can turn this minimalist text-editor into any application you want. Here we explore some useful Vim plugins to add IDE functionalities to Vim. Carefully choose plugins which don't slow down Vim. For example, below we recommend `gutentags` to manage tags which doesn't affect Vim, whereas other tag manager can slow Vim considerably.
