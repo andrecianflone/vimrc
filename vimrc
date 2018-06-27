@@ -157,6 +157,7 @@ let g:startify_list_order = [
 
 " VIM SIGNATURE
 " dictionary to map keys
+" Go to mark 'a' with: 'a
 let g:SignatureMap = {
   \ 'Leader'             :  "m",
   \ 'PlaceNextMark'      :  "m,",
