@@ -62,6 +62,10 @@ Plugin 'mhinz/vim-startify'
 " EASY MOTION
 Plugin 'easymotion/vim-easymotion'
 
+" VIM SEARCH PULSE
+" Pulse the line matching search
+Plugin 'inside/vim-search-pulse'
+
 " INCSEARCH
 " Incsearch --> incremental, fuzzy, search
 " with easymotion integration
@@ -80,7 +84,7 @@ Plugin 'scrooloose/nerdcommenter'
 " VIM WINDOW SWAP
 " Swap two windows:
 " press: 'gw' in one window
-" navigate to the other window, 'ww' again
+" navigate to the other window, 'gw' again
 Plugin 'wesQ3/vim-windowswap'
 
 " VIM SESSION
@@ -104,6 +108,11 @@ set background=dark
 "let g:solarized_visibility = "high"
 "let g:solarized_contrast = "high"
 "colorscheme solarized
+
+" Vim search pulse
+" 'cursor_line' pulses line, whereas 'pattern' pulses word
+let g:vim_search_pulse_mode = 'cursor_line'
+let g:vim_search_pulse_duration = 300
 
 " Syntastic
 set statusline+=%#warningmsg#
