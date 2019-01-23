@@ -35,6 +35,13 @@ Plugin 'majutsushi/tagbar'
 
 " GUTENTAGS, autogen tags
 Plugin 'ludovicchabant/vim-gutentags'
+"To install CTAGS without root privilege
+"# info: https://superuser.com/questions/66367/is-it-possible-to-install-ctags-without-root-privsjkuddjkcd ~/Downloads
+"wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz
+"tar zxf ctags-5.8.tar.gz
+"cd ctags-5.8
+"./configure --prefix=$HOME
+"make && make install
 
 " TABULAR
 " align stuff easily!
