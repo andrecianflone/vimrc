@@ -25,6 +25,9 @@ Plugin 'VundleVim/Vundle.vim'
 " usage: :FixWhitespace
 Plugin 'bronson/vim-trailing-whitespace'
 
+" Show indentation for Python
+Plugin 'Yggdroot/indentLine'
+
 " Vim-Signature
 " manage and display marks
 Plugin 'kshenoy/vim-signature'
@@ -50,7 +53,7 @@ Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'godlygeek/tabular'
 
 " Syntax for Markdown
-Plugin 'plasticboy/vim-markdown'
+"Plugin 'plasticboy/vim-markdown'
 
 " Syntastic, syntax checking
 Plugin 'vim-syntastic/syntastic'
