@@ -20,6 +20,13 @@ Plugin 'VundleVim/Vundle.vim'
 " opens file tree in a new left pane, shortcut: F7 (see remap section)
 "Plugin 'altercation/vim-colors-solarized'
 
+" Monokai 256 theme
+" usage, add this somewhere here: colors monokai256
+"Plugin 'shannonmoeller/vim-monokai256'
+
+" YouCompleteMe code completion, need Vim compiled with Python3
+"Plugin 'ycm-core/YouCompleteMe'
+
 " FIXWHITESPACE
 " Get rid of white spaces
 " usage: :FixWhitespace
@@ -27,6 +34,15 @@ Plugin 'bronson/vim-trailing-whitespace'
 
 " Show indentation for Python
 Plugin 'Yggdroot/indentLine'
+
+" Vim Airline, smart status bar
+Plugin 'vim-airline/vim-airline'
+
+" Pudb integration in Vim
+" Note, requires Vim compiled with +python
+" usage: :PUDBToggleBreakPoint
+" usage: :PUDBClearAllBreakpoints
+"Plugin 'SkyLeach/pudb.vim'
 
 " Vim-Signature
 " manage and display marks
@@ -56,7 +72,7 @@ Plugin 'godlygeek/tabular'
 "Plugin 'plasticboy/vim-markdown'
 
 " Syntastic, syntax checking
-Plugin 'vim-syntastic/syntastic'
+"Plugin 'vim-syntastic/syntastic'
 
 " CODE SNIPPETS
 " Adds code snippets
@@ -106,12 +122,20 @@ Plugin 'xolox/vim-misc'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" Other plugins
+
+" FUZZY FINDER
+" Need to install with:
+" git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+" ~/.fzf/install
+set rtp+=~/.fzf
+
 " =============================================================================
 " PLUGIN OPTIONS
 " =============================================================================
 
 " SOLARIZED
-set background=dark
+"set background=dark
 " config for proper displaying of colors in Screen
 "let g:solarized_termcolors=16
 "set t_Co=16
@@ -119,10 +143,24 @@ set background=dark
 "let g:solarized_contrast = "high"
 "colorscheme solarized
 
+" monokai 256 theme
+"colors monokai256
+
 " Vim search pulse
 " 'cursor_line' pulses line, whereas 'pattern' pulses word
 let g:vim_search_pulse_mode = 'cursor_line'
 let g:vim_search_pulse_duration = 300
+
+" Vim-airline statusbar
+function! WindowNumberAirline(...)
+    let builder = a:1
+    let context = a:2
+    call builder.add_section('airline_b', '[%{tabpagewinnr(tabpagenr())}]')
+    return 0
+endfunction
+
+call airline#add_statusline_func('WindowNumberAirline')
+call airline#add_inactive_statusline_func('WindowNumberAirline')
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -258,6 +296,11 @@ inoremap <silent> <F5> <Esc> :call SwitchToPrev()<CR>
 " Display Line numbers
 set number
 
+" Disable stupid integer increment/decrement, which always accidentally
+" trigger
+map <C-a> <Nop>
+map <C-x> <Nop>
+
 " Enable Omni completion, complete on tags
 " to call in insert mode: <C-X><C-O>
 "filetype plugin on
@@ -287,7 +330,7 @@ filetype on
 " See 80th column
 if (exists('+colorcolumn'))
     set colorcolumn=80
-    highlight ColorColumn ctermbg=2
+    highlight ColorColumn ctermbg=7
 endif
 
 " Set .md as markdown
@@ -297,10 +340,20 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " KEY REMAP
 " =============================================================================
 
+" Nerdtree toggle
 nmap <F7> :NERDTreeToggle<CR>
+map <silent> <C-n> :NERDTreeToggle<CR>
+" Nerdtree show hidden
+let NERDTreeShowHidden=1
+
 " remap jk to escape insert mode
 inoremap JK <Esc>
 inoremap jk <Esc>
+
+" Maps :W to :w (and others) efficiently, see issue here:
+" https://stackoverflow.com/questions/10590165/is-there-a-way-in-vim-to-make-w-to-do-the-same-thing-as-w
+command! -bang -range=% -complete=file -nargs=* W <line1>,<line2>write<bang> <args>
+command! -bang Q quit<bang>
 
 " Tabularize in normal or visual mode
 map tt :Tabularize /
@@ -313,11 +366,12 @@ map tt :Tabularize /
 "map lc :lclose<CR>
 
 " Run Syntastic syntax checkers
-map :s :SyntasticCheck
-map :r :SyntasticReset
+"map :s :SyntasticCheck
+"map :r :SyntasticReset
 
 " Show tagbar
-nmap <F8> :TagbarOpenAutoClose<CR>
+"nmap <F8> :TagbarOpenAutoClose<CR>
+nmap tb :TagbarOpenAutoClose<CR>
 
 " Launch the explorer
 map <F2> :Explore<CR>
@@ -370,7 +424,7 @@ map <C-k> :cp<CR>
 function! Matbreak()
    return 'dbstop in '.expand("%:t:r").' at '.line(".")
 endfunction
-:imap <F3> <C-R>=Matbreak()<CR> 
+:imap <F3> <C-R>=Matbreak()<CR>
 :command! Matbreak :call Matbreak()
 
 " Send everything in buffer to clipboard, requires xclip
@@ -413,10 +467,11 @@ while i <= 9
 endwhile
 
 " Display window number in status line
+" This is disabled when using vim-airline
 function! WindowNumber()
 	let str=tabpagewinnr(tabpagenr())
 	return str
 endfunction
 
 set laststatus=2
-set statusline=[%{WindowNumber()}]\ %f\ [col:%2c\ line:%4l]
+"set statusline=[%{WindowNumber()}]\ %f\ [col:%2c\ line:%4l]
