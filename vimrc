@@ -296,6 +296,10 @@ inoremap <silent> <F5> <Esc> :call SwitchToPrev()<CR>
 " Display Line numbers
 set number
 
+" V split open to the right, and horizontal below
+set splitright
+set splitbelow
+
 " Disable stupid integer increment/decrement, which always accidentally
 " trigger
 map <C-a> <Nop>
@@ -350,6 +354,9 @@ let NERDTreeShowHidden=1
 inoremap JK <Esc>
 inoremap jk <Esc>
 
+" launch terminal
+nmap te :vert term<CR>source $HOME/.bash_profile<CR>
+
 " Maps :W to :w (and others) efficiently, see issue here:
 " https://stackoverflow.com/questions/10590165/is-there-a-way-in-vim-to-make-w-to-do-the-same-thing-as-w
 command! -bang -range=% -complete=file -nargs=* W <line1>,<line2>write<bang> <args>
@@ -394,8 +401,8 @@ inoremap <F4> :noh<CR>
 noremap <Leader>t :noautocmd vimgrep /TODO/j **/*.py<CR>:cw<CR>
 
 " Shortcut to go to next and previous error in TO DO list
-map <C-j> :cn<CR>
-map <C-k> :cp<CR>
+map <Leader>j :cn<CR>
+map <Leader>k :cp<CR>
 
 " Scroll wheel settings
 :map <ScrollWheelUp> <C-Y>
