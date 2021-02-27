@@ -20,9 +20,10 @@ Plugin 'VundleVim/Vundle.vim'
 " opens file tree in a new left pane, shortcut: F7 (see remap section)
 "Plugin 'altercation/vim-colors-solarized'
 
-" Monokai 256 theme
-" usage, add this somewhere here: colors monokai256
-"Plugin 'shannonmoeller/vim-monokai256'
+" Monokai
+Plugin 'crusoexia/vim-monokai'
+colorscheme monokai
+set t_Co=256  " vim-monokai now only support 256 colours in terminal.
 
 " YouCompleteMe code completion, need Vim compiled with Python3
 "Plugin 'ycm-core/YouCompleteMe'
@@ -142,9 +143,6 @@ set rtp+=~/.fzf
 "let g:solarized_visibility = "high"
 "let g:solarized_contrast = "high"
 "colorscheme solarized
-
-" monokai 256 theme
-"colors monokai256
 
 " Vim search pulse
 " 'cursor_line' pulses line, whereas 'pattern' pulses word
