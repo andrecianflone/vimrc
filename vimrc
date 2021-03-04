@@ -353,7 +353,7 @@ inoremap JK <Esc>
 inoremap jk <Esc>
 
 " launch terminal
-nmap te :vert term<CR>source $HOME/.bash_profile<CR>
+nmap te :vert term<CR>tmpp=$(pwd)<CR>source $HOME/.bash_profile<CR>cd $tmpp<CR>
 
 " Maps :W to :w (and others) efficiently, see issue here:
 " https://stackoverflow.com/questions/10590165/is-there-a-way-in-vim-to-make-w-to-do-the-same-thing-as-w
