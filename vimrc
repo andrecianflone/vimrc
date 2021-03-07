@@ -162,7 +162,7 @@ call airline#add_inactive_statusline_func('WindowNumberAirline')
 
 " Syntastic
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 " Disable style messages for syntastic
@@ -354,6 +354,13 @@ inoremap jk <Esc>
 
 " launch terminal
 nmap te :vert term<CR>tmpp=$(pwd)<CR>source $HOME/.bash_profile<CR>cd $tmpp<CR>
+
+" Easily navigate next and previous buffers
+map <C-K> :bnext<CR>
+map <C-J> :bprev<CR>
+
+" List all buffers and require only number and CR to switch
+nnoremap <Leader>b :ls<CR>:b<Space>
 
 " Maps :W to :w (and others) efficiently, see issue here:
 " https://stackoverflow.com/questions/10590165/is-there-a-way-in-vim-to-make-w-to-do-the-same-thing-as-w
