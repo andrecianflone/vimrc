@@ -16,6 +16,12 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" CtrlP fuzzy finder
+" Usage:
+"   `<c-p>` to find a file
+"   `,b` to list buffer
+Plugin 'ctrlpvim/ctrlp.vim'
+
 " SOLARIZED THEME
 " opens file tree in a new left pane, shortcut: F7 (see remap section)
 "Plugin 'altercation/vim-colors-solarized'
@@ -358,6 +364,10 @@ nmap te :vert term<CR>tmpp=$(pwd)<CR>source $HOME/.bash_profile<CR>cd $tmpp<CR>
 " Easily navigate next and previous buffers
 map <C-K> :bnext<CR>
 map <C-J> :bprev<CR>
+
+" ctrlpvim/ctrlp.vim
+" CtrlP buffer shortcuts
+nmap ,b :CtrlPBuffer
 
 " List all buffers and require only number and CR to switch
 nnoremap <Leader>b :ls<CR>:b<Space>
