@@ -55,6 +55,9 @@ Plugin 'vim-airline/vim-airline'
 " manage and display marks
 Plugin 'kshenoy/vim-signature'
 
+" Vim-bookmarks, alternative to Signature
+Plugin 'MattesGroeger/vim-bookmarks'
+
 " TAGBAR
 " get overview of file structure by listing tags
 Plugin 'majutsushi/tagbar'
@@ -154,6 +157,9 @@ set rtp+=~/.fzf
 " 'cursor_line' pulses line, whereas 'pattern' pulses word
 let g:vim_search_pulse_mode = 'cursor_line'
 let g:vim_search_pulse_duration = 300
+
+" Vim-bookmars
+let g:bookmark_highlight_lines = 1
 
 " Vim-airline statusbar
 function! WindowNumberAirline(...)
