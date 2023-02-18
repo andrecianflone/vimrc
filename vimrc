@@ -22,14 +22,16 @@ Plugin 'VundleVim/Vundle.vim'
 "   `,b` to list buffer
 Plugin 'ctrlpvim/ctrlp.vim'
 
+" Control pudb breakpoints from Vim, requires Vim compiled with Python
+"Plugin 'mvanderkamp/vim-pudb-and-jam'
+
 " SOLARIZED THEME
 " opens file tree in a new left pane, shortcut: F7 (see remap section)
 "Plugin 'altercation/vim-colors-solarized'
 
-" Monokai
-Plugin 'crusoexia/vim-monokai'
-colorscheme monokai
-set t_Co=256  " vim-monokai now only support 256 colours in terminal.
+" Monokai 256 theme
+" usage, add this somewhere here: colors monokai256
+"Plugin 'shannonmoeller/vim-monokai256'
 
 " YouCompleteMe code completion, need Vim compiled with Python3
 "Plugin 'ycm-core/YouCompleteMe'
@@ -38,6 +40,9 @@ set t_Co=256  " vim-monokai now only support 256 colours in terminal.
 " Get rid of white spaces
 " usage: :FixWhitespace
 Plugin 'bronson/vim-trailing-whitespace'
+
+" Send line to term
+Plugin 'habamax/vim-sendtoterm'
 
 " Show indentation for Python
 Plugin 'Yggdroot/indentLine'
@@ -53,9 +58,14 @@ Plugin 'vim-airline/vim-airline'
 
 " Vim-Signature
 " manage and display marks
-Plugin 'kshenoy/vim-signature'
+"Plugin 'kshenoy/vim-signature'
 
 " Vim-bookmarks, alternative to Signature
+" Usage:
+    "<mm>   : toggle bookmarks
+    "<mn/p> : jump to next/previous bookmark
+    "<ma>   : list all bookmarks
+    "<mc/x> : clear bookmarks in current/all buffers
 Plugin 'MattesGroeger/vim-bookmarks'
 
 " TAGBAR
@@ -89,7 +99,6 @@ Plugin 'godlygeek/tabular'
 " Eg write "for" and tab and you'll get a sample for loop"
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 
 " VIM STARTIFY
@@ -153,13 +162,24 @@ set rtp+=~/.fzf
 "let g:solarized_contrast = "high"
 "colorscheme solarized
 
+" monokai 256 theme
+"colors monokai256
+
+" Vim Nerdtree
+" This is used to fix the error:
+"  `variable g:NERDtreeNodeDelimiter is not defined`
+let g:NERDTreeNodeDelimiter = "\u0009"
+
 " Vim search pulse
 " 'cursor_line' pulses line, whereas 'pattern' pulses word
 let g:vim_search_pulse_mode = 'cursor_line'
 let g:vim_search_pulse_duration = 300
 
-" Vim-bookmars
+" Vim-bookmarks
+highlight BookmarkLine ctermbg=234 ctermfg=NONE
 let g:bookmark_highlight_lines = 1
+let g:bookmark_save_per_working_dir = 1
+
 
 " Vim-airline statusbar
 function! WindowNumberAirline(...)
@@ -348,7 +368,7 @@ if (exists('+colorcolumn'))
 endif
 
 " Set .md as markdown
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+"autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " =============================================================================
 " KEY REMAP
@@ -364,19 +384,29 @@ let NERDTreeShowHidden=1
 inoremap JK <Esc>
 inoremap jk <Esc>
 
-" launch terminal
-nmap te :vert term<CR>tmpp=$(pwd)<CR>source $HOME/.bash_profile<CR>cd $tmpp<CR>
-
 " Easily navigate next and previous buffers
 map <C-K> :bnext<CR>
 map <C-J> :bprev<CR>
 
 " ctrlpvim/ctrlp.vim
 " CtrlP buffer shortcuts
-nmap ,b :CtrlPBuffer
+nmap <silent> ,b :CtrlPBuffer<CR>
 
 " List all buffers and require only number and CR to switch
 nnoremap <Leader>b :ls<CR>:b<Space>
+
+" launch terminal
+nmap te :vert term<CR>tmpp=$(pwd)<CR>source $HOME/.bash_profile<CR>cd $tmpp<CR>
+nmap tem :vert term<CR> <C-w>h :call term_sendkeys(2, "tmpp=$(pwd)\n")<CR>
+
+nmap <leader>r <Plug>(SendToTerm)
+nmap <leader>rr <Plug>(SendToTermLine)
+
+"function! Buildit()
+  ":vert term pwd
+  ""wincmd h
+"endfunction
+"com! Buildit call Buildit()
 
 " Maps :W to :w (and others) efficiently, see issue here:
 " https://stackoverflow.com/questions/10590165/is-there-a-way-in-vim-to-make-w-to-do-the-same-thing-as-w
